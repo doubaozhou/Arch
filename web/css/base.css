@@ -1,0 +1,41 @@
+.pageTitle {
+    float: left;
+}
+
+.ui.form, .header .content {
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+.ui.header, .sub.header {
+    color: #3C9B97 !important;
+}
+
+
+.field .input .ui.large.label, .field .ui.large.label {
+    font-size: 1.2rem;
+    width: 8em;
+    text-align: center;
+    vertical-align: middle;
+    /*font-weight: bold;*/
+}
+
+.ui.tableSegment {
+    height: 19.5em;
+    overflow-y: scroll;
+}
+
+.ui.table td {
+    height: 2.8em;
+}
+
+.ui.form .two.fields > .field.lb {
+    width: 9em;
+}
+
+.ui.segment.h .fields{
+    display: flex;
+}
+
+.ui.segment .two.fields > .field {
+    width: 50%;
+}
