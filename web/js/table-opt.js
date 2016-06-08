@@ -1,19 +1,12 @@
 var trNum = -1;
 var resID = 'null';
 
-function ajaxFileUpload(fileId) {
-    if(resID=='null'){
-        alert("Upload Error !");
-    }
-
+function ajaxFileUpload(fileId,id) {
     $.ajaxFileUpload({
-        url: "/file/upload.do",
+        url: "/file/upload.do?id="+id,
         secureuri: false,
         fileElementId: fileId,
         dataType: 'text',
-        data:{
-            resID: resID
-        },
         success: function (data, status) {
             alert(data);
         },
@@ -50,13 +43,15 @@ $(function () {
                 trNum = -1;
                 resID = 'null';
             }
-
         };
     $menuItem.on('click', handler.activate);
 
     //Add PIC
     $("#picFile").on('change', function () {
-        var filename = $("#picFile").val();
+        var file = this.files[0];
+        var filename = file.name;
+        var size = ((file.size / 1024) / 1024).toFixed(2) + "M";
+        var id = Math.uuid();
         var pos = -1;
         if (filename.indexOf("\\") > -1) {
             pos = filename.lastIndexOf("\\");
@@ -67,36 +62,27 @@ $(function () {
 
         var picTB = $("#picTable");
         var tnum = picTB.find("tbody").children("tr").length;
-        var trHtml = "<tr><td><input type='radio' name='picRadio' class='ui radio checkbox'></td><td>" + (tnum + 1) + "</td><td>否</td><td>" + filename + "</td></tr>";
+        var trHtml = "<tr><td>" + id + "</td><td>" + filename + "</td><td></td><td>" + size + "</td><td></td>" +
+            "<td><a style='margin-left: 20px' href='javascript:void(0)' onclick='picData(\"" + id + "\")'>编辑</a>" +
+            "<a style='margin-left: 20px' href='javascript:void(0)' onclick='delPic(" + id + ")'>删除</a></td></tr>";
         if (tnum > 0) {
-            // var temp = tnum-1;
             picTB.find("tbody tr:last").after(trHtml);
         } else {
             picTB.find("tbody").append(trHtml);
         }
+
+        ajaxFileUpload("picFile",id);
     });
 
-    //Save BUTTON for PIC
-    $("#picFileSave").click(function () {
-        if (trNum == -1 || resID == 'null') {
-            alert("请选中一条记录 !");
-            return;
-        }
-        var arr = [], v;
-        $('.picSegment input').each(function () {
-            v = $(this).val();
-            arr.push(v);
-        });
-        arr.push($(".picSegment textarea").val());
-
-        var tb = $("#picTable").find("tbody tr");
-        var hiddenHtml = "<input type='hidden' name='" + resID + "' value='" + arr.join("###") + "'>";
-        $("#picTable").find("tbody tr:eq(" + trNum + ")").append(hiddenHtml);
-        tb[trNum].cells[2].innerHTML = "已保存，未提交";
-
-        ajaxFileUpload("picFile");
-    });
 });
+
+function picData(id) {
+    window.open("pictureData.jsp?id=" + id);
+}
+
+function delPic(id) {
+    alert("delete");
+}
 
 //register dynamic event
 $(document).on("click", "table tbody tr", function () {
@@ -108,39 +94,4 @@ $(document).on("click", "table tbody tr", function () {
             .not($(this))
             .removeClass('active');
     }
-});
-
-$(document).on('click', "input[name=picRadio]", function () {
-    // trNum = $(this).parent().siblings('td')[0].innerHTML;
-    var trs = $("#picTable").find("tbody tr");
-    trNum = trs.index($(this).closest('tr'));
-    resID = trs[trNum].cells[1].innerHTML;
-});
-
-
-$(function () {
-
-
-    // var $saveItem = $('#save'),
-    // 	$modifyItem = $('#modify'),
-
-    // 	saveAction = {
-    // 		activate: function() {
-    // 			if ($('input, textarea').attr("disabled", false)) {
-    // 				$('input, textarea').attr("disabled", true);
-
-    // 				//store info here
-    // 			}
-    // 		}
-    // 	},
-    // 	modifyAction = {
-    // 		activate: function() {
-    // 			if ($('input, textarea').attr("disabled", true)) {
-    // 				$('input, textarea').attr("disabled", false);
-    // 			}
-    // 		}
-    // 	};
-
-    // $saveItem.on('click', saveAction.activate);
-    // $modifyItem.on('click', modifyAction.activate);
 });

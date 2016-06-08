@@ -8,6 +8,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String id = request.getParameter("id");
+    Building building;
+    boolean isNew = false;
+    if (id == null) {
+        building = new Building();
+        isNew = true;
+    } else {
+        BuildingService buildingService = new BuildingService();
+        building = buildingService.QueryBuilding(id);
+    }
+%>
 <head>
     <title>建筑基本信息录入</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -18,20 +30,11 @@
     <script type="text/javascript" src="js/baseInfoSave.js"></script>
     <script>
         function goPic() {
-            window.open("pictureInfo.jsp");
+            window.open("pictureList.jsp<%if(!isNew) out.print("?id="+id);%>");
         }
     </script>
 </head>
-<%
-    String id = request.getParameter("id");
-    Building building;
-    if (id == null) {
-        building = new Building();
-    } else {
-        BuildingService buildingService = new BuildingService();
-        building = buildingService.QueryBuilding(id);
-    }
-%>
+
 <body>
     <header id="header">
         <ul class="header-inner">
@@ -54,10 +57,14 @@
                 </div>
                 <div class="field">
                     <button id="save" class="ui big green basic button" style="margin-right: 200px">保存</button>
-                    <button id="pic" class="ui big blue basic button" onclick="goPic()">图片</button>
-                    <button id="video" class="ui big blue basic button">视频</button>
-                    <button id="document" class="ui big blue basic button">文献</button>
-                    <button id="drawing" class="ui big blue basic button">图纸</button>
+                    <%
+                        if(!isNew) {
+                            out.println("<button id=\"pic\" class=\"ui big blue basic button\" onclick=\"goPic()\">图片</button>\n" +
+                                    "<button id=\"video\" class=\"ui big blue basic button\">视频</button>\n" +
+                                    "<button id=\"document\" class=\"ui big blue basic button\">文献</button>\n" +
+                                    "<button id=\"drawing\" class=\"ui big blue basic button\">图纸</button>");
+                        }
+                    %>
                 </div>
             </div>
         </div>

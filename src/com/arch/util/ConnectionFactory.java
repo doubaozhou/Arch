@@ -14,6 +14,7 @@ public class ConnectionFactory {
     private static String dburl;
     private static String user;
     private static String pwd;
+    public static String uploadPath;
     private static Connection conn = null;
 
     private static final ConnectionFactory factory = new ConnectionFactory();
@@ -32,6 +33,7 @@ public class ConnectionFactory {
         dburl = prop.getProperty("dburl");
         user = prop.getProperty("user");
         pwd = prop.getProperty("password");
+        uploadPath = prop.getProperty("uploadPath");
     }
 
     private ConnectionFactory() {
@@ -53,7 +55,6 @@ public class ConnectionFactory {
     public static Connection makeConnection() {
         try {
             Class.forName(driver);
-//            String url = dburl + "?user=" + user +"&password=" + pwd + "&useUnicode=true&characterEncoding=UTF8";
             conn = DriverManager.getConnection(dburl, user, pwd);
         } catch (Exception e) {
             e.printStackTrace();

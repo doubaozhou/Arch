@@ -39,3 +39,8 @@
 .ui.segment .two.fields > .field {
     width: 50%;
 }
+
+tr.cur {
+    background: rgba(0,0,0,.05)!important;
+    color: rgba(0,0,0,.95)!important;
+}

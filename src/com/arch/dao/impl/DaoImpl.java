@@ -21,7 +21,7 @@ public class DaoImpl implements Dao {
 
     @Override
     public ResultSet getBuilding(Connection conn, String id) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_HistoricalBuilding b WHERE b.BUILDINGNUMBER = ?");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_HistoricalBuilding b WHERE b.ID = ?");
         ps.setString(1, id);
 
         return ps.executeQuery();
