@@ -46,4 +46,11 @@ public class DaoImpl implements Dao {
 
         ps.execute();
     }
+
+    @Override
+    public ResultSet test(Connection conn) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM TEST");
+
+        return ps.executeQuery();
+    }
 }

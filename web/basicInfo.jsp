@@ -51,7 +51,7 @@
                         <i class="info circle icon"></i>
 
                         <div class="content">基本信息
-                            <div class="sub header">建筑遗产的基本信息 ( 打星号为必填属性 )</div>
+                            <div class="sub header">建筑的基本信息 ( 打星号为必填属性 )</div>
                         </div>
                     </h2>
                 </div>

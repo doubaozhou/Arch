@@ -35,4 +35,11 @@ public interface Dao {
      * @throws SQLException
      */
     public void setBuildingBaseInfo(Connection conn, Building building) throws SQLException;
+
+    /**
+     * 测试DAO
+     * @param conn database connection
+     * @throws SQLException
+     */
+    public ResultSet test(Connection conn) throws SQLException;
 }

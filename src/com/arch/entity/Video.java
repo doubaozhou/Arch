@@ -13,6 +13,15 @@ public class Video {
     private String date;
     private String owner;
     private String key_word;
+    private String create_time;
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
+    }
 
     public String getId() {
         return id;

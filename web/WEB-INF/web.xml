@@ -20,6 +20,15 @@
         <servlet-name>BaseInfoSave</servlet-name>
         <url-pattern>/baseInfoSave.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PicInfoSave</servlet-name>
+        <servlet-class>com.arch.servlet.PicInfoSaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PicInfoSave</servlet-name>
+        <url-pattern>/picInfoSave.do</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>FileUploadServlet</servlet-name>

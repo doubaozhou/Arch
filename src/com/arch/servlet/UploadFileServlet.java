@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -68,7 +70,9 @@ public class UploadFileServlet extends HttpServlet {
 
                 rst.setCode("0");
                 rst.setMsg("保存成功！");
-                rst.setResult("");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                String time = simpleDateFormat.format(new Date());
+                rst.setResult(time);
                 out.append(rst.toJson().toString());
             } catch (Exception e) {
                 e.printStackTrace();

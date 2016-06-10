@@ -1,6 +1,7 @@
 <%@ page import="com.arch.service.BuildingService" %>
 <%@ page import="com.arch.entity.Building" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: zhou
   Date: 2016/5/19
@@ -13,8 +14,6 @@
     <title>建筑列表</title>
     <link rel="stylesheet" type="text/css" href="css/myCss.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-    <%--<script type="text/javascript" src="js/godetail.js"></script>--%>
-    <%--<script type="text/javascript" src="js/itemClick.js"></script>--%>
 </head>
 <body>
 <div class="new_header">
