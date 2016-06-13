@@ -50,7 +50,7 @@
                     </h2>
                 </div>
                 <div class="field">
-                    <button id="save" class="ui big green basic button" style="margin-right: 200px">保存</button>
+                    <button id="picave" class="ui big green basic button" style="margin-right: 200px">保存</button>
                 </div>
             </div>
         </div>

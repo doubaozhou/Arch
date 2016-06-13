@@ -29,6 +29,15 @@
         <servlet-name>PicInfoSave</servlet-name>
         <url-pattern>/picInfoSave.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VideoInfoSave</servlet-name>
+        <servlet-class>com.arch.servlet.VideoInfoSaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VideoInfoSave</servlet-name>
+        <url-pattern>/videoInfoSave.do</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>FileUploadServlet</servlet-name>
