@@ -40,6 +40,24 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>DocumentInfoSave</servlet-name>
+        <servlet-class>com.arch.servlet.DocumentInfoSaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DocumentInfoSave</servlet-name>
+        <url-pattern>/documentInfoSave.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DrawingInfoSave</servlet-name>
+        <servlet-class>com.arch.servlet.DrawingInfoSaveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrawingInfoSave</servlet-name>
+        <url-pattern>/drawingInfoSave.do</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>FileUploadServlet</servlet-name>
         <servlet-class>com.arch.servlet.UploadFileServlet</servlet-class>
     </servlet>

@@ -32,6 +32,15 @@
         function goPic() {
             window.open("pictureList.jsp<%if(!isNew) out.print("?id="+id);%>");
         }
+        function goVideo() {
+            window.open("videoList.jsp<%if(!isNew) out.print("?id="+id);%>");
+        }
+        function goDocument() {
+            window.open("documentList.jsp<%if(!isNew) out.print("?id="+id);%>");
+        }
+        function goDrawing() {
+            window.open("drawing.jsp<%if(!isNew) out.print("?id="+id);%>");
+        }
     </script>
 </head>
 
@@ -60,9 +69,9 @@
                     <%
                         if(!isNew) {
                             out.println("<button id=\"pic\" class=\"ui big blue basic button\" onclick=\"goPic()\">图片</button>\n" +
-                                    "<button id=\"video\" class=\"ui big blue basic button\">视频</button>\n" +
-                                    "<button id=\"document\" class=\"ui big blue basic button\">文献</button>\n" +
-                                    "<button id=\"drawing\" class=\"ui big blue basic button\">图纸</button>");
+                                    "<button id=\"video\" class=\"ui big blue basic button\" onclick=\"goVideo()\">视频</button>\n" +
+                                    "<button id=\"document\" class=\"ui big blue basic button\" onclick=\"goDocument()\">文献</button>\n" +
+                                    "<button id=\"drawing\" class=\"ui big blue basic button\" onclick=\"goDrawing()\">图纸</button>");
                         }
                     %>
                 </div>

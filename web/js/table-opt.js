@@ -141,6 +141,35 @@ $(function () {
         ajaxFileUpload("documentFile", id, documentTB);
     });
 
+    //Add drawing
+    $("#drawingFile").on('change', function () {
+        var file = this.files[0];
+        var filename = file.name;
+        var size = ((file.size / 1024) / 1024).toFixed(2) + "M";
+        var id = Math.uuid();
+        var pos = -1;
+        if (filename.indexOf("\\") > -1) {
+            pos = filename.lastIndexOf("\\");
+        } else if (filename.indexOf("") > -1) {
+            pos = filename.lastIndexOf("/");
+        }
+        filename = filename.substring(pos + 1);
+
+        var drawingTB = $("#drawingTable");
+        // var curTime = CurentTime();
+        var tnum = drawingTB.find("tbody").children("tr").length;
+        var trHtml = "<tr><td>" + id + "</td><td>" + filename + "</td><td></td><td>" + size + "</td><td></td>" +
+            "<td><a style='margin-left: 20px' href='javascript:void(0)' onclick='drawingData(\"" + id + "\")'>编辑</a>" +
+            "<a style='margin-left: 20px' href='javascript:void(0)' onclick='delDrawing(" + id + ")'>删除</a></td></tr>";
+        if (tnum > 0) {
+            drawingTB.find("tbody tr:last").after(trHtml);
+        } else {
+            drawingTB.find("tbody").append(trHtml);
+        }
+
+        ajaxFileUpload("documentFile", id, drawingTB);
+    });
+
 });
 
 //open data
@@ -153,11 +182,11 @@ function videoData(id) {
 }
 
 function drawingData(id) {
-    window.open("videoData.jsp?id=" + id)
+    window.open("drawingData.jsp?id=" + id)
 }
 
 function documentData(id) {
-    window.open("videoData.jsp?id=" + id)
+    window.open("documentData.jsp?id=" + id)
 }
 
 //delete
