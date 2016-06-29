@@ -14,6 +14,27 @@ public class Video {
     private String owner;
     private String key_word;
     private String create_time;
+    private String size;
+
+    public Video() {
+        this.id = "";
+        this.building_id = "";
+        this.desc = "";
+        this.name = "";
+        this.date = "";
+        this.owner = "";
+        this.key_word = "";
+        this.create_time = "";
+        this.size = "";
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getCreate_time() {
         return create_time;

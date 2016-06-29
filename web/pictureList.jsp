@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.arch.service.PictureService" %>
+<%@ page import="com.arch.entity.Picture" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: zhou
   Date: 2016/5/21
@@ -44,6 +46,12 @@
                 </div>
             </div>
         </div>
+        <%
+            String bId = request.getParameter("id");
+            PictureService pictureService = new PictureService();
+            List<Picture> list = pictureService.QueryPictureList();
+        %>
+        <input type="hidden" id="bId" value="<%=bId%>">
         <div class="ui large fluid form">
             <div class="ui green segment tableSegment" style="height: 700px;">
                 <table id="picTable" class="ui selectable fixed celled table">
@@ -58,7 +66,24 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                    <%
+                        for (Picture picture : list) {
+                            String id = picture.getId();
+                            %>
+                    <tr>
+                        <td><%=id%></td>
+                        <td><%=picture.getName()%></td>
+                        <td><%=picture.getCreate_time()%></td>
+                        <td><%=picture.getSize()%></td>
+                        <td><%=picture.getDesc()%></td>
+                        <td>
+                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="picData(<%=id%>)">编辑</a>
+                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="delPic(<%=id%>)">删除</a>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
                     </tbody>
                 </table>
             </div>

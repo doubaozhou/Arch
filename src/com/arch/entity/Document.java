@@ -15,6 +15,28 @@ public class Document {
     private String date;
     private String serial_number;
     private String create_time;
+    private String size;
+
+    public Document() {
+        this.id = "";
+        this.building_id = "";
+        this.name = "";
+        this.author = "";
+        this.key_word = "";
+        this.d_abstract = "";
+        this.date = "";
+        this.serial_number = "";
+        this.create_time = "";
+        this.size = "";
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getCreate_time() {
         return create_time;

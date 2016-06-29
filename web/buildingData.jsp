@@ -41,6 +41,9 @@
         function goDrawing() {
             window.open("drawing.jsp<%if(!isNew) out.print("?id="+id);%>");
         }
+        function back() {
+            window.location.href = "buildingList.jsp";
+        }
     </script>
 </head>
 
@@ -65,7 +68,8 @@
                     </h2>
                 </div>
                 <div class="field">
-                    <button id="save" class="ui big green basic button" style="margin-right: 200px">保存</button>
+                    <button id="save" class="ui big green basic button">保存</button>
+                    <button id="back" onclick="back()" class="ui big green basic button" style="margin-right: 200px">返回</button>
                     <%
                         if(!isNew) {
                             out.println("<button id=\"pic\" class=\"ui big blue basic button\" onclick=\"goPic()\">图片</button>\n" +

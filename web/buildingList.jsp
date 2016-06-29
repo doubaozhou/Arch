@@ -74,8 +74,7 @@
                             <li class="b_name"><%=building.getName()%></li>
                             <li class="b_create_time"><%=building.getCreate_time()%></li>
                             <li class="b_desc"><%=building.getDesc()%></li>
-                            <li class="b_opr"><a class="b_info" href="basicInfo.jsp?id=<%=building.getId()%>">建筑信息</a>
-                                <a class="b_media" href="dataInput.jsp">图文资料</a>
+                            <li class="b_opr"><a class="b_info" href="buildingData.jsp?id=<%=building.getId()%>">建筑信息</a>
                                 <a href="DeleteBuilding.do" class="delete">删除</a></li>
                         </ul>
                     </div>
@@ -103,7 +102,7 @@
 </body>
 <script>
     function newBuilding() {
-        window.location.href = "basicInfo.jsp";
+        window.location.href = "buildingData.jsp";
     }
 </script>
 </html>

@@ -37,6 +37,21 @@ public interface Dao {
     public void setBuildingBaseInfo(Connection conn, Building building) throws SQLException;
 
     /**
+     * 查询所有图片信息
+     * @param conn connection
+     * @return results
+     * @throws SQLException
+     */
+    public ResultSet getAllPicture(Connection conn) throws SQLException;
+
+    /**
+     * 插入图片信息
+     * @param conn connnection
+     * @throws SQLException
+     */
+    public void insertPictureInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException;
+
+    /**
      * 测试DAO
      * @param conn database connection
      * @throws SQLException

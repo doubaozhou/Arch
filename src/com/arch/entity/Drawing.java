@@ -12,6 +12,25 @@ public class Drawing {
     private String name;
     private String owner;
     private String create_time;
+    private String size;
+
+    public Drawing() {
+        this.id = "";
+        this.building_id = "";
+        this.desc = "";
+        this.name = "";
+        this.owner = "";
+        this.create_time = "";
+        this.size = "";
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getCreate_time() {
         return create_time;

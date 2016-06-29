@@ -1,10 +1,11 @@
 var trNum = -1;
 var resID = 'null';
 
-function ajaxFileUpload(fileId, id, table) {
+function ajaxFileUpload(fileId, id, bId) {
+
     $.ajaxFileUpload({
         type: 'POST',
-        url: "/file/upload.do?id=" + id,
+        url: "/file/upload.do?id=" + id + "&type=" + fileId + "&bId=" + bId,
         // url: "/file/upload.do",
         secureuri: false,
         fileElementId: fileId,
@@ -12,8 +13,7 @@ function ajaxFileUpload(fileId, id, table) {
         success: function (data) {
             if (data.code == 0) {
                 alert(data.msg);
-                var time = data.result;
-                table.find("tbody tr:last").find("td").eq(2).html(time);
+                window.location.reload();
             } else if (data.code == -1) {
                 alert(data.msg);
             }
@@ -25,35 +25,6 @@ function ajaxFileUpload(fileId, id, table) {
 }
 
 $(function () {
-    //Menu change
-    var $menuItem = $('.left-menu .menu a.item'),
-        handler = {
-            activate: function () {
-                if (!$(this).hasClass('dropdown browse')) {
-                    $(this)
-                        .addClass('active')
-                        .closest('.ui.menu')
-                        .find('.item')
-                        .not($(this))
-                        .removeClass('active');
-
-                    var lk = $(this).attr("class").replace("item", "").replace("active", "").trim();
-                    $("#main").children().each(function () {
-                        // var id = $(this).attr('id');
-                        if ($(this).attr('id') == lk) {
-                            $(this).show();
-                        } else {
-                            $(this).hide();
-                        }
-                    });
-                }
-
-                trNum = -1;
-                resID = 'null';
-            }
-        };
-    $menuItem.on('click', handler.activate);
-
     //Add PIC
     $("#picFile").on('change', function () {
         var file = this.files[0];
@@ -61,6 +32,7 @@ $(function () {
         var size = ((file.size / 1024) / 1024).toFixed(2) + "M";
         var id = Math.uuid();
         var pos = -1;
+        var bid = $("#bId").val();
         if (filename.indexOf("\\") > -1) {
             pos = filename.lastIndexOf("\\");
         } else if (filename.indexOf("") > -1) {
@@ -80,7 +52,7 @@ $(function () {
             picTB.find("tbody").append(trHtml);
         }
 
-        ajaxFileUpload("picFile", id, picTB);
+        ajaxFileUpload("picFile", id, bid);
     });
 
     //Add video
@@ -90,6 +62,7 @@ $(function () {
         var size = ((file.size / 1024) / 1024).toFixed(2) + "M";
         var id = Math.uuid();
         var pos = -1;
+        var bid = $("#bId").val();
         if (filename.indexOf("\\") > -1) {
             pos = filename.lastIndexOf("\\");
         } else if (filename.indexOf("") > -1) {
@@ -109,7 +82,7 @@ $(function () {
             videoTB.find("tbody").append(trHtml);
         }
 
-        ajaxFileUpload("videoFile", id, videoTB);
+        ajaxFileUpload("videoFile", id, bid);
     });
 
     //Add document
@@ -119,6 +92,7 @@ $(function () {
         var size = ((file.size / 1024) / 1024).toFixed(2) + "M";
         var id = Math.uuid();
         var pos = -1;
+        var bid = $("#bId").val();
         if (filename.indexOf("\\") > -1) {
             pos = filename.lastIndexOf("\\");
         } else if (filename.indexOf("") > -1) {
@@ -138,7 +112,7 @@ $(function () {
             documentTB.find("tbody").append(trHtml);
         }
 
-        ajaxFileUpload("documentFile", id, documentTB);
+        ajaxFileUpload("documentFile", id, bid);
     });
 
     //Add drawing
@@ -148,6 +122,7 @@ $(function () {
         var size = ((file.size / 1024) / 1024).toFixed(2) + "M";
         var id = Math.uuid();
         var pos = -1;
+        var bid = $("#bId").val();
         if (filename.indexOf("\\") > -1) {
             pos = filename.lastIndexOf("\\");
         } else if (filename.indexOf("") > -1) {
@@ -167,7 +142,7 @@ $(function () {
             drawingTB.find("tbody").append(trHtml);
         }
 
-        ajaxFileUpload("documentFile", id, drawingTB);
+        ajaxFileUpload("drawingFile", id, bid);
     });
 
 });

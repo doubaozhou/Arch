@@ -48,6 +48,24 @@ public class DaoImpl implements Dao {
     }
 
     @Override
+    public ResultSet getAllPicture(Connection conn) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_PICTURES");
+        return ps.executeQuery();
+    }
+
+    @Override
+    public void insertPictureInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO HC_PICTURES(ID, BUILDINGID, PICNAME, CREATETIME, PICSIZE) VALUES (?,?,?,?,?)");
+        ps.setString(1, id);
+        ps.setString(2, bId);
+        ps.setString(3, name);
+        ps.setString(4, time);
+        ps.setString(5, size);
+
+        ps.execute();
+    }
+
+    @Override
     public ResultSet test(Connection conn) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM TEST");
 

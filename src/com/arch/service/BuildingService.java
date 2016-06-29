@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by zhou on 2016/5/20.
+ *
  * @author zhou
  */
 public class BuildingService {
@@ -26,19 +27,19 @@ public class BuildingService {
             List<Building> list = new ArrayList<>();
             while (resultSet.next()) {
                 Building building = new Building();
-                building.setId(resultSet.getString(1));
-                building.setName(resultSet.getString(2));
-                building.setCity(resultSet.getString(3));
-                building.setAddress(resultSet.getString(4));
-                building.setDesigner(resultSet.getString(5));
-                building.setDate(resultSet.getString(6));
-                building.setConstruct_org(resultSet.getString(7));
-                building.setDesc(resultSet.getString(8));
-                building.setType(resultSet.getString(9));
-                building.setStyle(resultSet.getString(10));
-                building.setStructure(resultSet.getString(11));
-                building.setPost_code(resultSet.getString(12));
-                building.setCreate_time(resultSet.getString(13));
+                building.setId(resultSet.getString(1) != null ? resultSet.getString(1) : "");
+                building.setName(resultSet.getString(2) != null ? resultSet.getString(2) : "");
+                building.setCity(resultSet.getString(3) != null ? resultSet.getString(3) : "");
+                building.setAddress(resultSet.getString(4) != null ? resultSet.getString(4) : "");
+                building.setDesigner(resultSet.getString(5) != null ? resultSet.getString(5) : "");
+                building.setDate(resultSet.getString(6) != null ? resultSet.getString(6) : "");
+                building.setConstruct_org(resultSet.getString(7) != null ? resultSet.getString(7) : "");
+                building.setDesc(resultSet.getString(8) != null ? resultSet.getString(8) : "");
+                building.setType(resultSet.getString(9) != null ? resultSet.getString(9) : "");
+                building.setStyle(resultSet.getString(10) != null ? resultSet.getString(10) : "");
+                building.setStructure(resultSet.getString(11) != null ? resultSet.getString(11) : "");
+                building.setPost_code(resultSet.getString(12) != null ? resultSet.getString(12) : "");
+                building.setCreate_time(resultSet.getString(13) != null ? resultSet.getString(13) : "");
 
                 list.add(building);
             }

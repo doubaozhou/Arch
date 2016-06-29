@@ -17,6 +17,29 @@ public class Picture {
     private String relative_designer;
     private String relative_org;
     private String create_time;
+    private String size;
+
+    public Picture() {
+        this.id = "";
+        this.building_id = "";
+        this.name = "";
+        this.type = "";
+        this.origin = "";
+        this.desc = "";
+        this.date = "";
+        this.relative_designer = "";
+        this.relative_org = "";
+        this.create_time = "";
+        size = "";
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getCreate_time() {
         return create_time;
