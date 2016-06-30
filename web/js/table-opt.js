@@ -1,6 +1,3 @@
-var trNum = -1;
-var resID = 'null';
-
 function ajaxFileUpload(fileId, id, bId) {
 
     $.ajaxFileUpload({

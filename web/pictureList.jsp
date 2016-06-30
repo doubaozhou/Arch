@@ -77,8 +77,8 @@
                         <td><%=picture.getSize()%></td>
                         <td><%=picture.getDesc()%></td>
                         <td>
-                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="picData(<%=id%>)">编辑</a>
-                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="delPic(<%=id%>)">删除</a>
+                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="picData('<%=id%>')">编辑</a>
+                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="delPic('<%=id%>')">删除</a>
                         </td>
                     </tr>
                     <%

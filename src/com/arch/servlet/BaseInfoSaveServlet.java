@@ -5,6 +5,7 @@ import com.arch.dao.impl.DaoImpl;
 import com.arch.entity.Building;
 import com.arch.entity.Result;
 import com.arch.util.ConnectionFactory;
+import com.arch.util.TimeUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +26,7 @@ import java.util.Date;
 @WebServlet(name = "BaseInfoSaveServlet")
 public class BaseInfoSaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
         String name = request.getParameter("b_name");
         String designer = request.getParameter("b_designer");
         String city = request.getParameter("b_city");
@@ -36,8 +38,7 @@ public class BaseInfoSaveServlet extends HttpServlet {
         String style = request.getParameter("b_style");
         String postcode = request.getParameter("b_postcode");
         String desc = request.getParameter("b_desc");
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String c_date = format.format(new Date());
+        String c_date = TimeUtils.getTime();
 
         Building building = new Building(name, city, address, designer, date, company, desc, type, style, structure, postcode, c_date);
 
@@ -51,16 +52,16 @@ public class BaseInfoSaveServlet extends HttpServlet {
 
         try {
             conn = ConnectionFactory.getConnection();
-            userDao.setBuildingBaseInfo(conn, building);
-            rst.setCode("0");
-            rst.setMsg("录入成功！");
-            rst.setResult("");
+            if (id == null) {
+                userDao.insertBuildingBaseInfo(conn, building);
+            } else {
+                userDao.updateBuildingBaseInfo(conn, id, building);
+            }
+            rst.success();
             out.append(rst.toJson().toString());
         } catch (Exception e) {
             e.printStackTrace();
-            rst.setCode("-1");
-            rst.setMsg("录入失败！");
-            rst.setResult("");
+            rst.error();
             out.append(rst.toJson().toString());
         }
 

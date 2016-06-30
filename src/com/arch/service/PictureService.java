@@ -49,4 +49,32 @@ public class PictureService {
 
         return null;
     }
+
+    public Picture QueryPicture(String id) {
+        Connection conn;
+        try {
+            conn = ConnectionFactory.getConnection();
+            ResultSet resultSet = userDao.getPicture(conn, id);
+
+            Picture picture = new Picture();
+            while (resultSet.next()) {
+                picture.setId(resultSet.getString(1) != null ? resultSet.getString(1) : "");
+                picture.setBuilding_id(resultSet.getString(2) != null ? resultSet.getString(2) : "");
+                picture.setName(resultSet.getString(3) != null ? resultSet.getString(3) : "");
+                picture.setType(resultSet.getString(4) != null ? resultSet.getString(4) : "");
+                picture.setOrigin(resultSet.getString(5) != null ? resultSet.getString(5) : "");
+                picture.setDesc(resultSet.getString(6) != null ? resultSet.getString(6) : "");
+                picture.setDate(resultSet.getString(7) != null ? resultSet.getString(7) : "");
+                picture.setRelative_designer(resultSet.getString(8) != null ? resultSet.getString(8) : "");
+                picture.setRelative_org(resultSet.getString(9) != null ? resultSet.getString(9) : "");
+                picture.setCreate_time(resultSet.getString(10) != null ? resultSet.getString(10) : "");
+                picture.setSize(resultSet.getString(11) != null ? resultSet.getString(11) : "");
+            }
+
+            return picture;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

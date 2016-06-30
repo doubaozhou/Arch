@@ -49,4 +49,16 @@ public class Result {
         result.setCode("0");
         result.setMsg("success");
     }
+
+    public void error() {
+        code = "-1";
+        msg = "录入失败！";
+        result = "";
+    }
+
+    public void success() {
+        code = "0";
+        msg = "录入成功！";
+        result = "";
+    }
 }

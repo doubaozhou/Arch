@@ -15,18 +15,12 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
 <%
     String id = request.getParameter("id");
-    Picture picture;
-    boolean isNew = false;
-    if (id == null) {
-        picture = new Picture();
-        isNew = true;
-    } else {
-        PictureService pictureService = new PictureService();
-        picture = pictureService.QueryPicture(id);
-    }
+    PictureService pictureService = new PictureService();
+    Picture picture = pictureService.QueryPicture(id);
 %>
 <body>
 <div class="ui green segment picSegment">
@@ -37,6 +31,7 @@
             </li>
         </ul>
     </header>
+    <input type="hidden" id="picId" value="<%=id%>">
     <div id="basic" style="display: block;width: 98%;margin: 80px auto 0;">
         <div class="ui raised segment h">
             <div class="two fields">
@@ -50,7 +45,8 @@
                     </h2>
                 </div>
                 <div class="field">
-                    <button id="picave" class="ui big green basic button" style="margin-right: 200px">保存</button>
+                    <button id="picSave" class="ui big green basic button">保存</button>
+                    <button id="pic_close" onclick="c()" class="ui big green basic button" style="margin-right: 200px">返回</button>
                 </div>
             </div>
         </div>
@@ -63,7 +59,7 @@
                                 <div class="ui right pointing large label">
                                     <i class="mini asterisk loading icon"></i> 照片名称
                                 </div>
-                                <input id="pic_name" name="pic_name" placeholder="照片名称" type="text" value="">
+                                <input id="pic_name" name="pic_name" placeholder="照片名称" type="text" value="<%=picture.getName()%>">
                             </div>
                         </div>
                         <div class="field">
@@ -71,7 +67,7 @@
                                 <div class="ui right pointing large label">
                                     <i class="mini asterisk loading icon"></i>照片类型
                                 </div>
-                                <input id="pic_type" name="pic_type" value="" placeholder="照片类型" type="text">
+                                <input id="pic_type" name="pic_type" value="<%=picture.getType()%>" placeholder="照片类型" type="text">
                             </div>
                         </div>
                     </div>
@@ -79,13 +75,13 @@
                         <div class="field">
                             <div class="ui fluid large input">
                                 <div class="ui right pointing large label">照片来源</div>
-                                <input id="pic_origin" name="pic_origin" value="" placeholder="照片来源" type="text">
+                                <input id="pic_origin" name="pic_origin" value="<%=picture.getOrigin()%>" placeholder="照片来源" type="text">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui fluid large input">
                                 <div class="ui right pointing large label">照片年代</div>
-                                <input id="pic_date" name="pic_date" value="" placeholder="照片年代" type="text">
+                                <input id="pic_date" name="pic_date" value="<%=picture.getDate()%>" placeholder="照片年代" type="text">
                             </div>
                         </div>
                     </div>
@@ -93,14 +89,14 @@
                         <div class="field">
                             <div class="ui fluid large input">
                                 <div class="ui right pointing large label">相关设计师</div>
-                                <input id="pic_relative_designer" name="pic_relative_designer" value=""
+                                <input id="pic_relative_designer" name="pic_relative_designer" value="<%=picture.getRelative_designer()%>"
                                        placeholder="相关设计师" type="text">
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui fluid large input">
                                 <div class="ui right pointing large label">相关营造厂</div>
-                                <input id="pic_relative_com" name="pic_relative_com" value="" placeholder="相关营造厂"
+                                <input id="pic_relative_com" name="pic_relative_com" value="<%=picture.getRelative_org()%>" placeholder="相关营造厂"
                                        type="text">
                             </div>
                         </div>
@@ -111,7 +107,7 @@
                                 <i class="mini asterisk loading icon"></i>照片描述
                             </div>
                         </div>
-                        <textarea id="pic_desc" name="pic_desc" placeholder="描述"></textarea>
+                        <textarea id="pic_desc" name="pic_desc" placeholder="描述"><%=picture.getDesc()%></textarea>
                     </div>
                 </div>
             </div>

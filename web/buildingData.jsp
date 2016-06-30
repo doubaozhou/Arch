@@ -15,6 +15,7 @@
     if (id == null) {
         building = new Building();
         isNew = true;
+        id = "";
     } else {
         BuildingService buildingService = new BuildingService();
         building = buildingService.QueryBuilding(id);
@@ -27,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
-    <script type="text/javascript" src="js/baseInfoSave.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
     <script>
         function goPic() {
             window.open("pictureList.jsp<%if(!isNew) out.print("?id="+id);%>");
@@ -55,6 +56,7 @@
             </li>
         </ul>
     </header>
+    <input type="hidden" id="bId" value="<%=id%>">
     <div id="basic" style="display: block;width: 98%;margin: 80px auto 0;">
         <div class="ui raised segment h">
             <div class="two fields">

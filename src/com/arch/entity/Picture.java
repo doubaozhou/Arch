@@ -33,6 +33,16 @@ public class Picture {
         size = "";
     }
 
+    public Picture(String name, String type, String origin, String desc, String date, String relative_designer, String relative_org) {
+        this.name = name;
+        this.type = type;
+        this.origin = origin;
+        this.desc = desc;
+        this.date = date;
+        this.relative_designer = relative_designer;
+        this.relative_org = relative_org;
+    }
+
     public String getSize() {
         return size;
     }
