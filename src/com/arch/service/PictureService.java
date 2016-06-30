@@ -57,7 +57,7 @@ public class PictureService {
             ResultSet resultSet = userDao.getPicture(conn, id);
 
             Picture picture = new Picture();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 picture.setId(resultSet.getString(1) != null ? resultSet.getString(1) : "");
                 picture.setBuilding_id(resultSet.getString(2) != null ? resultSet.getString(2) : "");
                 picture.setName(resultSet.getString(3) != null ? resultSet.getString(3) : "");

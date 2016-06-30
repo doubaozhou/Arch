@@ -111,6 +111,21 @@ public class DaoImpl implements Dao {
     }
 
     @Override
+    public ResultSet getAllVideo(Connection conn) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Videos");
+
+        return ps.executeQuery();
+    }
+
+    @Override
+    public ResultSet getVideo(Connection conn, String id) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Videos WHERE ID =?");
+        ps.setString(1, id);
+
+        return ps.executeQuery();
+    }
+
+    @Override
     public ResultSet test(Connection conn) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("SELECT * FROM TEST");
 

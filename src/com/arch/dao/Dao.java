@@ -79,6 +79,23 @@ public interface Dao {
     void updatePictureInfo(Connection conn, String id, Picture picture) throws SQLException;
 
     /**
+     * 获取所有视频
+     * @param conn connection
+     * @return list
+     * @throws SQLException
+     */
+    ResultSet getAllVideo(Connection conn) throws SQLException;
+
+    /**
+     * 获取视频
+     * @param conn connection
+     * @param id vId
+     * @return video
+     * @throws SQLException
+     */
+    ResultSet getVideo(Connection conn, String id) throws SQLException;
+
+    /**
      * 测试DAO
      * @param conn database connection
      * @throws SQLException
