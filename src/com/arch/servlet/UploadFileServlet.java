@@ -91,7 +91,7 @@ public class UploadFileServlet extends HttpServlet {
                 if (type.equalsIgnoreCase("picFile")) {
                     userDao.insertPictureInfo(conn, id, bId, name, TimeUtils.getTime(), size);
                 } else if (type.equalsIgnoreCase("videoFile")) {
-
+                    userDao.insertVideoInfo(conn, id, bId , name, TimeUtils.getTime(), size);
                 } else if (type.equalsIgnoreCase("documentFile")) {
 
                 } else if (type.equalsIgnoreCase("drawingFile")) {

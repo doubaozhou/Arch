@@ -46,7 +46,7 @@
                 </div>
                 <div class="field">
                     <button id="picSave" class="ui big green basic button">保存</button>
-                    <button id="pic_close" onclick="c()" class="ui big green basic button" style="margin-right: 200px">返回</button>
+                    <button id="pic_close" onclick="c()" class="ui big green basic button" style="margin-right: 100px">返回</button>
                 </div>
             </div>
         </div>

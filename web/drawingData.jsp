@@ -37,7 +37,7 @@
                         </h2>
                     </div>
                     <div class="field">
-                        <button id="drawingSave" class="ui big green basic button" style="margin-right: 200px">保存</button>
+                        <button id="drawingSave" class="ui big green basic button" style="margin-right: 100px">保存</button>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ package com.arch.dao.impl;
 import com.arch.dao.Dao;
 import com.arch.entity.Building;
 import com.arch.entity.Picture;
+import com.arch.entity.Video;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -123,6 +124,32 @@ public class DaoImpl implements Dao {
         ps.setString(1, id);
 
         return ps.executeQuery();
+    }
+
+    @Override
+    public void insertVideoInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO HC_VIDEOS(ID, BUILDINGID, VIDEONAME, CREATETIME, VIDEOSIZE) VALUES (?,?,?,?,?)");
+        ps.setString(1, id);
+        ps.setString(2, bId);
+        ps.setString(3, name);
+        ps.setString(4, time);
+        ps.setString(5, size);
+
+        ps.execute();
+    }
+
+    @Override
+    public void updateVideoInfo(Connection conn, String id, Video video) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE HC_VIDEOS SET VIDEONAME=?, DESCRIPTION=?, VIDEODATE=?, OWNER=?," +
+                "KEYWORD=? WHERE ID = ?");
+        ps.setString(1, video.getName());
+        ps.setString(2, video.getDesc());
+        ps.setString(3, video.getDate());
+        ps.setString(4, video.getOwner());
+        ps.setString(5, video.getKey_word());
+        ps.setString(6, id);
+
+        ps.execute();
     }
 
     @Override

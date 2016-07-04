@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.arch.service.VideoService" %>
+<%@ page import="com.arch.entity.Video" %><%--
   Created by IntelliJ IDEA.
   User: I331314
   Date: 2016/6/10
@@ -15,6 +16,11 @@
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
 </head>
+<%
+    String id = request.getParameter("id");
+    VideoService videoService = new VideoService();
+    Video video = videoService.QueryVideo(id);
+%>
 <body>
     <div class="ui green segment picSegment">
         <header id="header">
@@ -24,6 +30,7 @@
                 </li>
             </ul>
         </header>
+        <input type="hidden" id="videoId" value="<%=id%>">
         <div id="basic" style="display: block;width: 98%;margin: 80px auto 0;">
             <div class="ui raised segment h">
                 <div class="two fields">
@@ -37,7 +44,8 @@
                         </h2>
                     </div>
                     <div class="field">
-                        <button id="videoSave" class="ui big green basic button" style="margin-right: 200px">保存</button>
+                        <button id="videoSave" class="ui big green basic button">保存</button>
+                        <button id="pic_close" onclick="c()" class="ui big green basic button" style="margin-right: 100px">返回</button>
                     </div>
                 </div>
             </div>
@@ -50,7 +58,7 @@
                                     <div class="ui right pointing large label">
                                         <i class="mini asterisk loading icon"></i> 视频名称
                                     </div>
-                                    <input id="video_name" name="video_name" value="" placeholder="视频名称" type="text">
+                                    <input id="video_name" name="video_name" value="<%=video.getName()%>" placeholder="视频名称" type="text">
                                 </div>
                             </div>
                             <div class="field">
@@ -58,7 +66,7 @@
                                     <div class="ui right pointing large label">
                                         <i class="mini asterisk loading icon"></i>视频年代
                                     </div>
-                                    <input id="video_date" name="video_date" value="" placeholder="视频年代" type="text">
+                                    <input id="video_date" name="video_date" value="<%=video.getDate()%>" placeholder="视频年代" type="text">
                                 </div>
                             </div>
                         </div>
@@ -66,13 +74,13 @@
                             <div class="field">
                                 <div class="ui fluid large input">
                                     <div class="ui right pointing large label">拥有者</div>
-                                    <input id="video_owner" name="video_owner" value="" placeholder="拥有者" type="text">
+                                    <input id="video_owner" name="video_owner" value="<%=video.getOwner()%>" placeholder="拥有者" type="text">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui fluid large input">
                                     <div class="ui right pointing large label">视频关键字</div>
-                                    <input id="video_keyword" name="video_keyword" value="" placeholder="关键字" type="text">
+                                    <input id="video_keyword" name="video_keyword" value="<%=video.getKey_word()%>" placeholder="关键字" type="text">
                                 </div>
                             </div>
                         </div>
@@ -82,7 +90,7 @@
                                     <i class="mini asterisk loading icon"></i>视频描述
                                 </div>
                             </div>
-                            <textarea id="video_desc" name="video_desc" placeholder="描述"></textarea>
+                            <textarea id="video_desc" name="video_desc" placeholder="描述"><%=video.getDesc()%></textarea>
                         </div>
                     </div>
                 </div>

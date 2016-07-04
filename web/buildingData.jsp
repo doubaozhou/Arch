@@ -71,7 +71,7 @@
                 </div>
                 <div class="field">
                     <button id="save" class="ui big green basic button">保存</button>
-                    <button id="back" onclick="back()" class="ui big green basic button" style="margin-right: 200px">返回</button>
+                    <button id="back" onclick="back()" class="ui big green basic button" style="margin-right: 100px">返回</button>
                     <%
                         if(!isNew) {
                             out.println("<button id=\"pic\" class=\"ui big blue basic button\" onclick=\"goPic()\">图片</button>\n" +

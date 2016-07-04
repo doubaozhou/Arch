@@ -57,6 +57,28 @@ $(function () {
             });
         }
     });
+
+    //video
+    $("#videoSave").click(function () {
+        var name = $("#video_name").val();
+        var date = $("#video_date").val();
+        var desc = $("#video_desc").val();
+        if (name == "" || date == "" || desc == "") {
+            alert("加星号属性必填!!");
+            return false;
+        } else {
+            var d = $("#videoInfoForm").serialize();
+            var id = $("#videoId").val();
+            $.post("videoInfoSave.do?id=" + id, d, function (data) {
+                if (data.code == 0) {
+                    alert(data.msg);
+                    window.close();
+                } else if (data.code == -1) {
+                    alert("录入失败!");
+                }
+            });
+        }
+    });
 });
 
 function c() {

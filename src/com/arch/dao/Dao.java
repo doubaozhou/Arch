@@ -2,6 +2,7 @@ package com.arch.dao;
 
 import com.arch.entity.Building;
 import com.arch.entity.Picture;
+import com.arch.entity.Video;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,11 +10,13 @@ import java.sql.SQLException;
 
 /**
  * Created by zhou on 2016/5/20.
+ *
  * @author zhou
  */
 public interface Dao {
     /**
      * 获取所有建筑列表
+     *
      * @param conn database connection
      * @return 建筑结果集
      * @throws SQLException
@@ -22,8 +25,9 @@ public interface Dao {
 
     /**
      * 查询某一建筑信息
+     *
      * @param conn database connection
-     * @param id building id
+     * @param id   building id
      * @return Building Class
      * @throws SQLException
      */
@@ -31,7 +35,8 @@ public interface Dao {
 
     /**
      * 插入建筑基本信息
-     * @param conn database connection
+     *
+     * @param conn     database connection
      * @param building 建筑类
      * @throws SQLException
      */
@@ -39,8 +44,9 @@ public interface Dao {
 
     /**
      * 更新建筑基本信息
-     * @param conn connection
-     * @param id b_id
+     *
+     * @param conn     connection
+     * @param id       b_id
      * @param building building
      * @throws SQLException
      */
@@ -48,6 +54,7 @@ public interface Dao {
 
     /**
      * 查询所有图片信息
+     *
      * @param conn connection
      * @return results
      * @throws SQLException
@@ -56,6 +63,7 @@ public interface Dao {
 
     /**
      * 获取照片
+     *
      * @param conn connection
      * @return picture
      * @throws SQLException
@@ -64,6 +72,7 @@ public interface Dao {
 
     /**
      * 插入图片信息
+     *
      * @param conn connnection
      * @throws SQLException
      */
@@ -71,8 +80,9 @@ public interface Dao {
 
     /**
      * 更新照片信息
-     * @param conn connection
-     * @param id p_id
+     *
+     * @param conn    connection
+     * @param id      p_id
      * @param picture pic
      * @throws SQLException
      */
@@ -80,6 +90,7 @@ public interface Dao {
 
     /**
      * 获取所有视频
+     *
      * @param conn connection
      * @return list
      * @throws SQLException
@@ -88,15 +99,38 @@ public interface Dao {
 
     /**
      * 获取视频
+     *
      * @param conn connection
-     * @param id vId
+     * @param id   vId
      * @return video
      * @throws SQLException
      */
     ResultSet getVideo(Connection conn, String id) throws SQLException;
 
     /**
+     * 插入视频
+     * @param conn connection
+     * @param id id
+     * @param bId bId
+     * @param name name
+     * @param time time
+     * @param size size
+     * @throws SQLException
+     */
+    void insertVideoInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException;
+
+    /**
+     * 修改video
+     * @param conn connection
+     * @param id id
+     * @param video video
+     * @throws SQLException
+     */
+    void updateVideoInfo(Connection conn, String id, Video video) throws SQLException;
+
+    /**
      * 测试DAO
+     *
      * @param conn database connection
      * @throws SQLException
      */
