@@ -28,6 +28,14 @@ public class Video {
         this.size = "";
     }
 
+    public Video(String name, String date, String owner, String key_word, String desc ) {
+        this.desc = desc;
+        this.name = name;
+        this.date = date;
+        this.owner = owner;
+        this.key_word = key_word;
+    }
+
     public String getSize() {
         return size;
     }

@@ -2,6 +2,7 @@ package com.arch.dao.impl;
 
 import com.arch.dao.Dao;
 import com.arch.entity.Building;
+import com.arch.entity.Drawing;
 import com.arch.entity.Picture;
 import com.arch.entity.Video;
 
@@ -148,6 +149,44 @@ public class DaoImpl implements Dao {
         ps.setString(4, video.getOwner());
         ps.setString(5, video.getKey_word());
         ps.setString(6, id);
+
+        ps.execute();
+    }
+
+    @Override
+    public ResultSet getAllDrawing(Connection conn) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_DRAWINGS");
+
+        return ps.executeQuery();
+    }
+
+    @Override
+    public ResultSet getDrawing(Connection conn, String id) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_DRAWINGS WHERE ID =?");
+        ps.setString(1, id);
+
+        return ps.executeQuery();
+    }
+
+    @Override
+    public void insertDrawingInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO HC_DRAWINGS(ID, BUILDINGID, DRAWINGNAME, CREATETIME, DRAWINGSIZE) VALUES (?,?,?,?,?)");
+        ps.setString(1, id);
+        ps.setString(2, bId);
+        ps.setString(3, name);
+        ps.setString(4, time);
+        ps.setString(5, size);
+
+        ps.execute();
+    }
+
+    @Override
+    public void updateDrawingInfo(Connection conn, String id, Drawing drawing) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE HC_DRAWINGS SET DRAWINGNAME=?, DESCRIPTION=?, OWNER=? WHERE ID = ?");
+        ps.setString(1, drawing.getName());
+        ps.setString(2, drawing.getDesc());
+        ps.setString(3, drawing.getOwner());
+        ps.setString(4, id);
 
         ps.execute();
     }

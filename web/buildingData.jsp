@@ -40,7 +40,7 @@
             window.open("documentList.jsp<%if(!isNew) out.print("?id="+id);%>");
         }
         function goDrawing() {
-            window.open("drawing.jsp<%if(!isNew) out.print("?id="+id);%>");
+            window.open("drawingList.jsp<%if(!isNew) out.print("?id="+id);%>");
         }
         function back() {
             window.location.href = "buildingList.jsp";

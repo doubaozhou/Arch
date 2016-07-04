@@ -79,6 +79,27 @@ $(function () {
             });
         }
     });
+
+    //drawing
+    $("#drawingSave").click(function () {
+        var name = $("#dr_name").val();
+        var desc = $("#dr_desc").val();
+        if (name == "" || desc == "") {
+            alert("加星号属性必填!!");
+            return false;
+        } else {
+            var d = $("#drawingInfoForm").serialize();
+            var id = $("#drawingId").val();
+            $.post("drawingInfoSave.do?id=" + id, d, function (data) {
+                if (data.code == 0) {
+                    alert(data.msg);
+                    window.close();
+                } else if (data.code == -1) {
+                    alert("录入失败!");
+                }
+            });
+        }
+    });
 });
 
 function c() {

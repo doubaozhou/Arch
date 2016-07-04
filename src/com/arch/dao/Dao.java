@@ -1,6 +1,7 @@
 package com.arch.dao;
 
 import com.arch.entity.Building;
+import com.arch.entity.Drawing;
 import com.arch.entity.Picture;
 import com.arch.entity.Video;
 
@@ -109,9 +110,10 @@ public interface Dao {
 
     /**
      * 插入视频
+     *
      * @param conn connection
-     * @param id id
-     * @param bId bId
+     * @param id   id
+     * @param bId  bId
      * @param name name
      * @param time time
      * @param size size
@@ -121,12 +123,53 @@ public interface Dao {
 
     /**
      * 修改video
-     * @param conn connection
-     * @param id id
+     *
+     * @param conn  connection
+     * @param id    id
      * @param video video
      * @throws SQLException
      */
     void updateVideoInfo(Connection conn, String id, Video video) throws SQLException;
+
+    /**
+     * 获取所有图纸
+     *
+     * @param conn connection
+     * @return set
+     * @throws SQLException
+     */
+    ResultSet getAllDrawing(Connection conn) throws SQLException;
+
+    /**
+     * 获取图纸
+     *
+     * @param conn conn
+     * @param id   dId
+     * @return drawing
+     * @throws SQLException
+     */
+    ResultSet getDrawing(Connection conn, String id) throws SQLException;
+
+    /**
+     * 插入图纸
+     * @param conn conn
+     * @param id id
+     * @param bId bId
+     * @param name name
+     * @param time create time
+     * @param size size
+     * @throws SQLException
+     */
+    void insertDrawingInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException;
+
+    /**
+     * 更新
+     * @param conn conn
+     * @param id id
+     * @param drawing drawing
+     * @throws SQLException
+     */
+    void updateDrawingInfo(Connection conn, String id, Drawing drawing) throws SQLException;
 
     /**
      * 测试DAO

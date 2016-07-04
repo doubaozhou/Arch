@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.arch.service.DrawingService" %>
+<%@ page import="com.arch.entity.Drawing" %><%--
   Created by IntelliJ IDEA.
   User: I331314
   Date: 2016/6/13
@@ -14,7 +15,13 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
+<%
+    String id = request.getParameter("id");
+    DrawingService drawingService = new DrawingService();
+    Drawing drawing = drawingService.QueryDrawing(id);
+%>
 <body>
     <div class="ui green segment picSegment">
         <header id="header">
@@ -24,6 +31,7 @@
                 </li>
             </ul>
         </header>
+        <input type="hidden" id="drawingId" value="<%=id%>">
         <div id="basic" style="display: block;width: 98%;margin: 80px auto 0;">
             <div class="ui raised segment h">
                 <div class="two fields">
@@ -37,7 +45,8 @@
                         </h2>
                     </div>
                     <div class="field">
-                        <button id="drawingSave" class="ui big green basic button" style="margin-right: 100px">保存</button>
+                        <button id="drawingSave" class="ui big green basic button">保存</button>
+                        <button id="drawing_close" onclick="c()" class="ui big green basic button" style="margin-right: 100px">返回</button>
                     </div>
                 </div>
             </div>
@@ -50,13 +59,13 @@
                                     <div class="ui right pointing large label">
                                         <i class="mini asterisk loading icon"></i> 图纸名称
                                     </div>
-                                    <input id="dr_name" name="dr_name" value="" placeholder="图纸名称" type="text">
+                                    <input id="dr_name" name="dr_name" value="<%=drawing.getName()%>" placeholder="图纸名称" type="text">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui fluid large input">
                                     <div class="ui right pointing large label">拥有者</div>
-                                    <input id="dr_owner" name="dr_owner" value="" placeholder="拥有者" type="text">
+                                    <input id="dr_owner" name="dr_owner" value="<%=drawing.getOwner()%>" placeholder="拥有者" type="text">
                                 </div>
                             </div>
                         </div>
@@ -66,7 +75,7 @@
                                     <i class="mini asterisk loading icon"></i>图纸描述
                                 </div>
                             </div>
-                            <textarea id="dr_desc" name="dr_desc" placeholder="描述"></textarea>
+                            <textarea id="dr_desc" name="dr_desc" placeholder="描述"><%=drawing.getDesc()%></textarea>
                         </div>
                     </div>
                 </div>

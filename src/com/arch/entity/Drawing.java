@@ -24,6 +24,12 @@ public class Drawing {
         this.size = "";
     }
 
+    public Drawing(String name, String desc, String owner) {
+        this.desc = desc;
+        this.name = name;
+        this.owner = owner;
+    }
+
     public String getSize() {
         return size;
     }

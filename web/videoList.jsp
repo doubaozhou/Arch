@@ -48,10 +48,11 @@
         </div>
     </div>
     <%
-        String vId = request.getParameter("id");
+        String bId = request.getParameter("id");
         VideoService videoService = new VideoService();
         List<Video> list = videoService.QueryVideoList();
     %>
+    <input type="hidden" id="bId" value="<%=bId%>">
     <div class="ui large fluid form">
         <div class="ui green segment tableSegment" style="height: 700px;">
             <table id="videoTable" class="ui selectable fixed celled table">

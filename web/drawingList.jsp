@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.arch.service.DrawingService" %>
+<%@ page import="com.arch.entity.Drawing" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: I331314
   Date: 2016/6/13
@@ -26,6 +28,11 @@
         </li>
     </ul>
 </header>
+<%
+    String bId = request.getParameter("id");
+    DrawingService drawingService = new DrawingService();
+    List<Drawing> list = drawingService.QueryDrawingList();
+%>
     <div id="drawing" style="display:block;width: 98%;height: 100%;margin: 80px auto 0;">
         <div class="ui raised segment h">
             <div class="two fields">
@@ -44,6 +51,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" id="bId" value="<%=bId%>">
         <div class="ui large fluid form">
             <div class="ui green segment tableSegment" style="height: 700px;">
                 <table id="drawingTable" class="ui selectable fixed celled table">
@@ -58,7 +66,24 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                    <%
+                        for (Drawing drawing : list) {
+                            String id = drawing.getId();
+                    %>
+                    <tr>
+                        <td><%=id%></td>
+                        <td><%=drawing.getName()%></td>
+                        <td><%=drawing.getCreate_time()%></td>
+                        <td><%=drawing.getSize()%></td>
+                        <td><%=drawing.getDesc()%></td>
+                        <td>
+                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="drawingData('<%=id%>')">编辑</a>
+                            <a style="margin-left: 20px" href="javascript:void(0)" onclick="delDrawing('<%=id%>')">删除</a>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>
                     </tbody>
                 </table>
             </div>

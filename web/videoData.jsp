@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
 <%
     String id = request.getParameter("id");
@@ -45,7 +46,7 @@
                     </div>
                     <div class="field">
                         <button id="videoSave" class="ui big green basic button">保存</button>
-                        <button id="pic_close" onclick="c()" class="ui big green basic button" style="margin-right: 100px">返回</button>
+                        <button id="video_close" onclick="c()" class="ui big green basic button" style="margin-right: 100px">返回</button>
                     </div>
                 </div>
             </div>
