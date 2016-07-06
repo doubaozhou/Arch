@@ -1,0 +1,85 @@
+CREATE TABLE HC_HISTORICALBUILDING
+(
+  ID NUMBER
+, BUILDINGNAME VARCHAR2(200) NOT NULL
+, CITY VARCHAR2(50) NOT NULL
+, ADDRESS VARCHAR2(200) NOT NULL
+, DESIGNER VARCHAR2(50)
+, BUILDINGDATE VARCHAR2(50) NOT NULL
+, CONSTRUCTIONORG VARCHAR2(50 )
+, DESCRIPTION VARCHAR2(4000) NOT NULL
+, TYPE VARCHAR2(50) NOT NULL
+, STYLE VARCHAR2(100) NOT NULL
+, STRUCTURE VARCHAR2(100) NOT NULL
+, POSTCODE VARCHAR2(50)
+, CREATETIME VARCHAR2(20) NOT NULL
+, PRIMARY KEY(ID)
+)
+
+CREATE SEQUENCE B_ID_SEQ INCREMENT BY 1 MAXVALUE 999999999999 MINVALUE 1 NOCACHE ORDER;
+
+CREATE OR REPLACE TRIGGER B_ID_TRIGGER
+BEFORE INSERT ON HC_HISTORICALBUILDING
+FOR EACH ROW
+WHEN (NEW.ID IS NULL)
+BEGIN
+SELECT B_ID_SEQ.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+
+
+create table HC_Pictures
+(
+   ID      VARCHAR2(36)         not null,
+   BuildingID     VARCHAR2(36)  not null,
+   PicName               VARCHAR2(100)  not null,
+   PicType               VARCHAR2(15),
+   Origin             VARCHAR2(200),
+   Description        VARCHAR2(1500),
+   PicDate               VARCHAR2(50),
+   RelatedDesigner    VARCHAR2(50),
+   RelatedOrg         VARCHAR2(200),
+   CREATETIME 		VARCHAR2(20)  not null,
+   PICSIZE			VARCHAR2(20)  not null,
+   PRIMARY KEY(ID)
+)
+
+create table HC_Videos
+(
+   ID      VARCHAR2(36)         not null,
+   BuildingID     VARCHAR2(36)  not null,
+   VideoName               VARCHAR2(100)  not null,
+   Description        VARCHAR2(1500),
+   VIDEODate               VARCHAR2(50),
+   Owner		VARCHAR2(100),
+   Keyword		VARCHAR2(200),
+   CREATETIME 		VARCHAR2(20)  not null,
+   VIDEOSIZE			VARCHAR2(20)  not null,
+   PRIMARY KEY(ID)
+)
+
+create table HC_Drawings
+(
+   ID      VARCHAR2(36)         not null,
+   BuildingID     VARCHAR2(36)  not null,
+   DrawingName               VARCHAR2(100)  not null,
+   Description        VARCHAR2(1500),
+   Owner		VARCHAR2(100),
+   CREATETIME 		VARCHAR2(20)  not null,
+   DrawingSIZE			VARCHAR2(20)  not null,
+   PRIMARY KEY(ID)
+)
+
+create table HC_Documents
+(
+   ID      VARCHAR2(36)         not null,
+   BuildingID     VARCHAR2(36) ,
+   Name               VARCHAR2(100)  not null,
+   abstract        VARCHAR2(1500)  not null,
+   Author		VARCHAR2(50)	not null,
+   KeyWord			VARCHAR2(100)  not null,
+   PublishYear			VARCHAR2(50),
+   SerialNumber		VARCHAR2(30),
+   CREATETIME 		VARCHAR2(20)  not null,
+   DOCUMENTSIZE			VARCHAR2(20)  not null,
+   PRIMARY KEY(ID)
+)

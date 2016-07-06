@@ -163,19 +163,19 @@ function documentData(id) {
 
 //delete
 function delPic(id) {
-    alert("delete");
+    alert("未实现");
 }
 
 function delVideo(id) {
-    alert("delete");
+    alert("未实现");
 }
 
 function delDrawing(id) {
-    alert("delete");
+    alert("未实现");
 }
 
 function delDocument(id) {
-    alert("delete");
+    alert("未实现");
 }
 
 //get time

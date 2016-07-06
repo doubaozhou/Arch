@@ -1,10 +1,8 @@
 package com.arch.dao.impl;
 
 import com.arch.dao.Dao;
-import com.arch.entity.Building;
-import com.arch.entity.Drawing;
-import com.arch.entity.Picture;
-import com.arch.entity.Video;
+import com.arch.entity.*;
+import com.sun.org.apache.regexp.internal.RE;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -187,6 +185,48 @@ public class DaoImpl implements Dao {
         ps.setString(2, drawing.getDesc());
         ps.setString(3, drawing.getOwner());
         ps.setString(4, id);
+
+        ps.execute();
+    }
+
+    @Override
+    public ResultSet getAllDocument(Connection conn) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Documents");
+
+        return ps.executeQuery();
+    }
+
+    @Override
+    public ResultSet getDocument(Connection conn, String id) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Documents WHERE id = ?");
+        ps.setString(1, id);
+
+        return ps.executeQuery();
+    }
+
+    @Override
+    public void insertDocumentInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO HC_Documents(ID, BUILDINGID, NAME, CREATETIME, DOCUMENTSIZE) VALUES (?,?,?,?,?)");
+        ps.setString(1, id);
+        ps.setString(2, bId);
+        ps.setString(3, name);
+        ps.setString(4, time);
+        ps.setString(5, size);
+
+        ps.execute();
+    }
+
+    @Override
+    public void updateDocumentInfo(Connection conn, String id, Document document) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE HC_Documents SET NAME=?,ABSTRACT=?,AUTHOR=?, KEYWORD=?, " +
+                "PUBLISHYEAR=?, SERIALNUMBER=? WHERE ID = ?");
+        ps.setString(1, document.getName());
+        ps.setString(2, document.getD_abstract());
+        ps.setString(3, document.getAuthor());
+        ps.setString(4, document.getKey_word());
+        ps.setString(5, document.getDate());
+        ps.setString(6, document.getSerial_number());
+        ps.setString(7, id);
 
         ps.execute();
     }

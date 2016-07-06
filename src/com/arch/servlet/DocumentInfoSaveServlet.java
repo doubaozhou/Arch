@@ -15,6 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "DocumentInfoSaveServlet")
 public class DocumentInfoSaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
 
     }
 

@@ -1,9 +1,6 @@
 package com.arch.dao;
 
-import com.arch.entity.Building;
-import com.arch.entity.Drawing;
-import com.arch.entity.Picture;
-import com.arch.entity.Video;
+import com.arch.entity.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -170,6 +167,14 @@ public interface Dao {
      * @throws SQLException
      */
     void updateDrawingInfo(Connection conn, String id, Drawing drawing) throws SQLException;
+
+    ResultSet getAllDocument(Connection conn) throws SQLException;
+
+    ResultSet getDocument(Connection conn, String id) throws SQLException;
+
+    void insertDocumentInfo(Connection conn, String id, String bId, String name, String time, String size) throws SQLException;
+
+    void updateDocumentInfo(Connection conn, String id, Document document) throws SQLException;
 
     /**
      * 测试DAO

@@ -30,6 +30,15 @@ public class Document {
         this.size = "";
     }
 
+    public Document(String name, String author, String key_word, String d_abstract, String date, String serial_number) {
+        this.name = name;
+        this.author = author;
+        this.key_word = key_word;
+        this.d_abstract = d_abstract;
+        this.date = date;
+        this.serial_number = serial_number;
+    }
+
     public String getSize() {
         return size;
     }
