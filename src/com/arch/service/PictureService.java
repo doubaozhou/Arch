@@ -18,11 +18,11 @@ import java.util.List;
 public class PictureService {
     private Dao userDao = new DaoImpl();
 
-    public List<Picture> QueryPictureList() {
+    public List<Picture> QueryPictureList(String bId) {
         Connection conn;
         try {
             conn = ConnectionFactory.getConnection();
-            ResultSet resultSet = userDao.getAllPicture(conn);
+            ResultSet resultSet = userDao.getAllPicture(conn, bId);
 
             List<Picture> list = new ArrayList<>();
             while (resultSet.next()) {

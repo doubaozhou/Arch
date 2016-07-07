@@ -17,11 +17,11 @@ import java.util.List;
 public class VideoService {
     private Dao userDao = new DaoImpl();
 
-    public List<Video> QueryVideoList() {
+    public List<Video> QueryVideoList(String bId) {
         Connection conn;
         try {
             conn = ConnectionFactory.getConnection();
-            ResultSet resultSet = userDao.getAllVideo(conn);
+            ResultSet resultSet = userDao.getAllVideo(conn, bId);
 
             List<Video> list = new ArrayList<>();
             while (resultSet.next()) {

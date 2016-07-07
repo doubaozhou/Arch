@@ -19,6 +19,7 @@
     <script type="text/javascript" src="js/ajaxfileupload.js"></script>
     <script type="text/javascript" src="js/uuid.js"></script>
     <script type="text/javascript" src="js/table-opt.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
 <body>
 <header id="header">
@@ -31,7 +32,7 @@
 <%
     String bId = request.getParameter("id");
     DrawingService drawingService = new DrawingService();
-    List<Drawing> list = drawingService.QueryDrawingList();
+    List<Drawing> list = drawingService.QueryDrawingList(bId);
 %>
     <div id="drawing" style="display:block;width: 98%;height: 100%;margin: 80px auto 0;">
         <div class="ui raised segment h">
@@ -48,6 +49,7 @@
                 <div class="field">
                     <input type="file" id="drawingFile" name="drawingFile" style="display:none" onchange="">
                     <input type="button" class="ui big primary button" value="选择视频" onclick="drawingFile.click()">
+                    <button onclick="c()" class="ui big green basic button">返回</button>
                 </div>
             </div>
         </div>

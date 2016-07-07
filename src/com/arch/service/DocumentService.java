@@ -17,12 +17,12 @@ import java.util.List;
 public class DocumentService {
     private Dao userDao = new DaoImpl();
 
-    public List<Document> QueryDocumentList() {
+    public List<Document> QueryDocumentList(String bId) {
         Connection conn;
 
         try {
             conn = ConnectionFactory.getConnection();
-            ResultSet resultSet = userDao.getAllDocument(conn);
+            ResultSet resultSet = userDao.getAllDocument(conn, bId);
 
             List<Document> list = new ArrayList<>();
             while (resultSet.next()) {

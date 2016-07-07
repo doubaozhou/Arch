@@ -16,7 +16,7 @@ import java.util.Date;
 public class DaoImpl implements Dao {
     @Override
     public ResultSet getAllBuilding(Connection conn) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_HistoricalBuilding");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_HistoricalBuilding order by ID");
         return ps.executeQuery();
     }
 
@@ -69,8 +69,10 @@ public class DaoImpl implements Dao {
     }
 
     @Override
-    public ResultSet getAllPicture(Connection conn) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_PICTURES");
+    public ResultSet getAllPicture(Connection conn, String bId) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_PICTURES WHERE BUILDINGID = ?");
+        ps.setString(1, bId);
+
         return ps.executeQuery();
     }
 
@@ -111,8 +113,9 @@ public class DaoImpl implements Dao {
     }
 
     @Override
-    public ResultSet getAllVideo(Connection conn) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Videos");
+    public ResultSet getAllVideo(Connection conn, String bId) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Videos WHERE BUILDINGID=?");
+        ps.setString(1, bId);
 
         return ps.executeQuery();
     }
@@ -152,8 +155,9 @@ public class DaoImpl implements Dao {
     }
 
     @Override
-    public ResultSet getAllDrawing(Connection conn) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_DRAWINGS");
+    public ResultSet getAllDrawing(Connection conn, String bId) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_DRAWINGS WHERE BUILDINGID=?");
+        ps.setString(1, bId);
 
         return ps.executeQuery();
     }
@@ -190,8 +194,9 @@ public class DaoImpl implements Dao {
     }
 
     @Override
-    public ResultSet getAllDocument(Connection conn) throws SQLException {
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Documents");
+    public ResultSet getAllDocument(Connection conn, String bId) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM HC_Documents WHERE BUILDINGID=?");
+        ps.setString(1, bId);
 
         return ps.executeQuery();
     }

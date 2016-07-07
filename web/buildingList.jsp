@@ -85,7 +85,7 @@
                 %>
             </div>
             <div class="show-more">
-                <button id="go_hy" onclick="showmore('QueryInfo.do')">查看更多</button>
+                <button id="go_hy" onclick="showmore('QueryInfo.do')"></button>
             </div>
             <!--货源信息-->
         </div>
@@ -94,7 +94,7 @@
 </div>
 <!-- footer -->
 <div class="footer">
-    <div class="footer_div">
+    <div class="footer_div" style="height: 30px;">
         <div class="clear"></div>
     </div>
     <div class="footer_bottom">Copyright © 2012-2016 207动物园 版权所有</div>

@@ -19,6 +19,7 @@
     <script type="text/javascript" src="js/ajaxfileupload.js"></script>
     <script type="text/javascript" src="js/uuid.js"></script>
     <script type="text/javascript" src="js/table-opt.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
 <body>
     <header id="header">
@@ -43,13 +44,14 @@
                 <div class="field">
                     <input type="file" id="picFile" name="picFile" style="display:none" onchange="">
                     <input type="button" class="ui big primary button" value="选择照片" onclick="picFile.click()">
+                    <button onclick="c()" class="ui big green basic button">返回</button>
                 </div>
             </div>
         </div>
         <%
             String bId = request.getParameter("id");
             PictureService pictureService = new PictureService();
-            List<Picture> list = pictureService.QueryPictureList();
+            List<Picture> list = pictureService.QueryPictureList(bId);
         %>
         <input type="hidden" id="bId" value="<%=bId%>">
         <div class="ui large fluid form">

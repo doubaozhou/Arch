@@ -3,6 +3,7 @@
  * @author zhou
  */
 $(function () {
+    //basic info
     $("#save").click(function () {
         var name = $("#b_name").val();
         var city = $("#b_city").val();
@@ -91,6 +92,29 @@ $(function () {
             var d = $("#drawingInfoForm").serialize();
             var id = $("#drawingId").val();
             $.post("drawingInfoSave.do?id=" + id, d, function (data) {
+                if (data.code == 0) {
+                    alert(data.msg);
+                    window.close();
+                } else if (data.code == -1) {
+                    alert("录入失败!");
+                }
+            });
+        }
+    });
+
+    //document
+    $("#documentSave").click(function () {
+        var name = $("#doc_name").val();
+        var author = $("#doc_author").val();
+        var kword = $("#doc_kword").val();
+        var doc_abs = $("#doc_abs").val();
+        if (name == "" || author == "" || kword == "" || doc_abs == "") {
+            alert("加星号属性必填!!");
+            return false;
+        } else {
+            var d = $("#documentInfoForm").serialize();
+            var id = $("#documentId").val();
+            $.post("documentInfoSave.do?id=" + id, d, function (data) {
                 if (data.code == 0) {
                     alert(data.msg);
                     window.close();

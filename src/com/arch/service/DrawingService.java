@@ -18,12 +18,12 @@ import java.util.List;
 public class DrawingService {
     Dao userDao = new DaoImpl();
 
-    public List<Drawing> QueryDrawingList() {
+    public List<Drawing> QueryDrawingList(String bId) {
         Connection conn;
 
         try {
             conn = ConnectionFactory.getConnection();
-            ResultSet resultSet = userDao.getAllDrawing(conn);
+            ResultSet resultSet = userDao.getAllDrawing(conn, bId);
 
             List<Drawing> list = new ArrayList<>();
             while (resultSet.next()) {

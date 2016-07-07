@@ -45,7 +45,8 @@
                     </h2>
                 </div>
                 <div class="field">
-                    <button id="documentSave" class="ui big green basic button" style="margin-right: 100px">保存</button>
+                    <button id="documentSave" class="ui big green basic button">保存</button>
+                    <button id="document_close" onclick="c()" class="ui big green basic button" style="margin-right: 100px">返回</button>
                 </div>
             </div>
         </div>
@@ -58,7 +59,7 @@
                                 <div class="ui right pointing large label">
                                     <i class="mini asterisk loading icon"></i> 文献名称
                                 </div>
-                                <input id="doc_name" name="doc_name" value="<%document.getName()=%>" placeholder="文献名称"
+                                <input id="doc_name" name="doc_name" value="<%=document.getName()%>" placeholder="文献名称"
                                        type="text">
                             </div>
                         </div>
@@ -106,7 +107,7 @@
                                 <i class="mini asterisk loading icon"></i>摘要
                             </div>
                         </div>
-                        <textarea placeholder="摘要"><%document.getD_abstract() =%></textarea>
+                        <textarea id="doc_abs" name="doc_abs" placeholder="摘要"><%=document.getD_abstract()%></textarea>
                     </div>
                 </div>
             </div>

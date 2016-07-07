@@ -19,6 +19,7 @@
     <script type="text/javascript" src="js/ajaxfileupload.js"></script>
     <script type="text/javascript" src="js/uuid.js"></script>
     <script type="text/javascript" src="js/table-opt.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
 <body>
 <header id="header">
@@ -31,7 +32,7 @@
 <%
     String bId = request.getParameter("id");
     DocumentService documentService = new DocumentService();
-    List<Document> list = documentService.QueryDocumentList();
+    List<Document> list = documentService.QueryDocumentList(bId);
 %>
 <input type="hidden" id="bId" value="<%=bId%>">
 <div id="document" style="display:block;width: 98%;height: 100%;margin: 80px auto 0;">
@@ -49,6 +50,7 @@
             <div class="field">
                 <input type="file" id="documentFile" name="documentFile" style="display:none" onchange="">
                 <input type="button" class="ui big primary button" value="选择文献" onclick="documentFile.click()">
+                <button onclick="c()" class="ui big green basic button">返回</button>
             </div>
         </div>
     </div>

@@ -57,7 +57,7 @@ public interface Dao {
      * @return results
      * @throws SQLException
      */
-    ResultSet getAllPicture(Connection conn) throws SQLException;
+    ResultSet getAllPicture(Connection conn, String bId) throws SQLException;
 
     /**
      * 获取照片
@@ -93,7 +93,7 @@ public interface Dao {
      * @return list
      * @throws SQLException
      */
-    ResultSet getAllVideo(Connection conn) throws SQLException;
+    ResultSet getAllVideo(Connection conn, String bId) throws SQLException;
 
     /**
      * 获取视频
@@ -135,7 +135,7 @@ public interface Dao {
      * @return set
      * @throws SQLException
      */
-    ResultSet getAllDrawing(Connection conn) throws SQLException;
+    ResultSet getAllDrawing(Connection conn, String bId) throws SQLException;
 
     /**
      * 获取图纸
@@ -168,7 +168,7 @@ public interface Dao {
      */
     void updateDrawingInfo(Connection conn, String id, Drawing drawing) throws SQLException;
 
-    ResultSet getAllDocument(Connection conn) throws SQLException;
+    ResultSet getAllDocument(Connection conn, String bId) throws SQLException;
 
     ResultSet getDocument(Connection conn, String id) throws SQLException;
 

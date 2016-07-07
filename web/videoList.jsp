@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/ajaxfileupload.js"></script>
     <script type="text/javascript" src="js/uuid.js"></script>
     <script type="text/javascript" src="js/table-opt.js"></script>
+    <script type="text/javascript" src="js/InfoSave.js"></script>
 </head>
 <body>
 <header id="header">
@@ -44,13 +45,14 @@
             <div class="field">
                 <input type="file" id="videoFile" name="videoFile" style="display:none" onchange="">
                 <input type="button" class="ui big primary button" value="选择视频" onclick="videoFile.click()">
+                <button onclick="c()" class="ui big green basic button">返回</button>
             </div>
         </div>
     </div>
     <%
         String bId = request.getParameter("id");
         VideoService videoService = new VideoService();
-        List<Video> list = videoService.QueryVideoList();
+        List<Video> list = videoService.QueryVideoList(bId);
     %>
     <input type="hidden" id="bId" value="<%=bId%>">
     <div class="ui large fluid form">
